@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { filterContext } from "../contexts/data";
 
 const Filter = () => {
   const [filterStatus, setFilterStatus] = useState({
@@ -70,6 +71,12 @@ const Filter = () => {
     setFilterStatus({ ...filterStatus, search: event.target.value });
   };
   console.log(filterStatus);
+
+  const {filterData , setFilterData} = useContext(filterContext);
+
+  setFilterData(filterStatus);
+  console.log(filterData);
+
   return (
     <div className="space-y-4">
       <div className="flex gap-2 justify-end">
