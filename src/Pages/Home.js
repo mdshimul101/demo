@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../Components/Card";
+import { filterContext } from "../contexts/data";
 
 const Home = () => {
+  const { filterData } = useContext(filterContext);
   const [data, setData] = useState([]);
+  console.log(filterData, "page");
 
   useEffect(() => {
     fetch("https://api.spacexdata.com/v3/launches")
@@ -15,7 +18,7 @@ const Home = () => {
       });
   }, []);
 
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-24 justify-center">
